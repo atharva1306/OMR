@@ -1,4 +1,4 @@
-package com.GTaster.x.OMR;
+package com.GTasterix.OMR;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

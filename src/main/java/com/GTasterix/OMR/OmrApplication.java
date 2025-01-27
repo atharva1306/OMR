@@ -1,4 +1,4 @@
-package com.GTaster.x.OMR;
+package com.GTasterix.OMR;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
