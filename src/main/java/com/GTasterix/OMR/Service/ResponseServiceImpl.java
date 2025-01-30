@@ -7,6 +7,9 @@ import com.GTasterix.OMR.model.Response;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Service
 
@@ -17,7 +20,11 @@ public class ResponseServiceImpl implements ResponseService {
     @Autowired
     ResponseRepository responseRepository;
     @Override
-    public ResponseDto addResponse(ResponseDto responseDto) {
+    public ResponseDto addResponse(ResponseDto responseDto, MultipartFile signature, MultipartFile invigilatorSign) throws IOException {
+        byte[] sign = signature.getBytes();
+        byte[] i_sign = invigilatorSign.getBytes();
+        responseDto.setSignature(sign);
+        responseDto.setInvigilatorSignature(i_sign);
         Response response = modelMapper.map(responseDto,Response.class);
 
         Response SavedResponse = responseRepository.save(response);
@@ -25,10 +32,10 @@ public class ResponseServiceImpl implements ResponseService {
 
     }
 
-    @Override
-    public ResponseDto getByRollno(Integer rollNumber) {
-        Response response = responseRepository.findByRollNumber(rollNumber);
-        return modelMapper.map(response,ResponseDto.class);
-
-    }
+//    @Override
+//    public ResponseDto getByRollno(Integer rollNumber) {
+//        Response response = responseRepository.findByRollNumber(rollNumber);
+//        return modelMapper.map(response,ResponseDto.class);
+//
+//    }
 }

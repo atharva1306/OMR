@@ -19,7 +19,7 @@ public class BaseResponseDto {
         this.hasError = hasError;
     }
 
-    110
+
 
 }
 
